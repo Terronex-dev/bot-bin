@@ -1,0 +1,5 @@
+# Bot-Bin Dependencies
+sentence-transformers>=2.2.0
+numpy>=1.21.0
+msgpack>=1.0.0
+huggingface_hub[hf_xet]>=0.20.0
