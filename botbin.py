@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Bot-Bin — Semantic Memory for Clawdbot
+Bot BIN — Semantic Memory for Clawdbot
 ======================================
 Converts markdown memory files to AIF-BIN format with vector embeddings
 for semantic search across your bot's memory.
@@ -155,7 +155,7 @@ def cmd_search(args):
     query = args.query
     top_k = args.k
     
-    print_header("Bot-Bin — Semantic Search")
+    print_header("Bot BIN — Semantic Search")
     print(f"Query: \"{query}\"")
     print(f"Searching in: {AIFBIN_DIR}")
     print()
@@ -214,7 +214,7 @@ def cmd_search(args):
 
 def cmd_status(args):
     """Show sync status."""
-    print_header("Bot-Bin — Status")
+    print_header("Bot BIN — Status")
     
     state = load_sync_state()
     md_files = get_md_files()
@@ -248,7 +248,7 @@ def cmd_info(args):
         print_error(f"File not found: {args.file}")
         return
     
-    print_header("Bot-Bin — File Info")
+    print_header("Bot BIN — File Info")
     
     data = load_aifbin(str(filepath))
     meta = data.get('metadata', {})
@@ -293,7 +293,7 @@ def cmd_extract(args):
 def main():
     parser = argparse.ArgumentParser(
         prog='botbin',
-        description='Bot-Bin — Semantic Memory for Clawdbot'
+        description='Bot BIN — Semantic Memory for Clawdbot'
     )
     
     subparsers = parser.add_subparsers(dest='command', help='Commands')

@@ -1,22 +1,22 @@
-# Bot-Bin
+# Bot BIN
 
 **Semantic Memory for Clawdbot**
 
-Bot-Bin gives your Clawdbot instance persistent semantic memory. It converts your markdown memory files into AIF-BIN format with vector embeddings, enabling search by meaning instead of keywords.
+Bot BIN gives your Clawdbot instance persistent semantic memory. It converts your markdown memory files into AIF-BIN format with vector embeddings, enabling search by meaning instead of keywords.
 
 ---
 
 ## How It Works
 
 ```
-memory/2026-02-02.md  -->  [Bot-Bin Sync]  -->  memory/aifbin/2026-02-02.aif-bin
+memory/2026-02-02.md  -->  [Bot BIN Sync]  -->  memory/aifbin/2026-02-02.aif-bin
        |                         |                        |
    Raw markdown            Embeddings              Searchable vectors
                            (384-dim)
 ```
 
 1. You write notes to `memory/*.md` files during sessions
-2. Bot-Bin syncs changed files to `.aif-bin` with vector embeddings
+2. Bot BIN syncs changed files to `.aif-bin` with vector embeddings
 3. Semantic search finds relevant past context by meaning
 4. Your bot can recall "what did we decide about X" even across sessions
 
@@ -108,7 +108,7 @@ python3 botbin/botbin.py search "project timeline" -k 10
 **Output:**
 ```
 ════════════════════════════════════════════════════════════
-  Bot-Bin — Semantic Search
+  Bot BIN — Semantic Search
 ════════════════════════════════════════════════════════════
 
 Query: "what decisions did we make"
@@ -140,7 +140,7 @@ python3 botbin/botbin.py status
 **Output:**
 ```
 ════════════════════════════════════════════════════════════
-  Bot-Bin — Status
+  Bot BIN — Status
 ════════════════════════════════════════════════════════════
 
 Workspace: /home/user/clawd
@@ -214,7 +214,7 @@ clawd-workspace/
 
 ## Tracked Files
 
-Bot-Bin automatically tracks:
+Bot BIN automatically tracks:
 
 - `MEMORY.md` in workspace root (if it exists)
 - All `*.md` files in `memory/` directory
@@ -225,7 +225,7 @@ To add more locations, edit the `get_md_files()` function in `botbin.py`.
 
 ## Embedding Model
 
-Bot-Bin uses `all-MiniLM-L6-v2` (384 dimensions) by default:
+Bot BIN uses `all-MiniLM-L6-v2` (384 dimensions) by default:
 
 - Fast inference (~10ms per chunk)
 - Good quality for document retrieval
@@ -238,7 +238,7 @@ Bot-Bin uses `all-MiniLM-L6-v2` (384 dimensions) by default:
 
 ### Using memory_search
 
-If your Clawdbot has the `memory_search` tool, Bot-Bin files are automatically searchable. The semantic search will find relevant content from your `.aif-bin` files.
+If your Clawdbot has the `memory_search` tool, Bot BIN files are automatically searchable. The semantic search will find relevant content from your `.aif-bin` files.
 
 ### Manual Search in Responses
 
