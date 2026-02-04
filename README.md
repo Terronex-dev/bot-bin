@@ -38,14 +38,58 @@ cd bot-bin
 
 ### 2. Install dependencies
 
-```bash
+#### Windows (PowerShell/CMD)
+
+```powershell
 pip install -r requirements.txt
+mkdir memory
 ```
 
-### 3. Create memory directory
+#### macOS
 
 ```bash
+pip3 install -r requirements.txt
 mkdir -p memory
+```
+
+#### Linux (Ubuntu/Debian)
+
+```bash
+pip3 install -r requirements.txt
+mkdir -p memory
+```
+
+#### WSL (Ubuntu)
+
+```bash
+pip install -r requirements.txt --break-system-packages
+mkdir -p memory
+```
+
+> **Note:** WSL Ubuntu uses externally-managed Python. The `--break-system-packages` flag is required, or use a virtual environment.
+
+---
+
+## Usage
+
+### Windows (PowerShell/CMD)
+
+```powershell
+python botbin.py sync                              # Sync markdown to AIF-BIN
+python botbin.py search "what decisions did we make"   # Semantic search
+python botbin.py status                            # Show sync status
+python botbin.py info memory\aifbin\file.aif-bin   # File details
+python botbin.py extract memory\aifbin\file.aif-bin    # Extract original
+```
+
+### macOS / Linux / WSL
+
+```bash
+python3 botbin.py sync                              # Sync markdown to AIF-BIN
+python3 botbin.py search "what decisions did we make"   # Semantic search
+python3 botbin.py status                            # Show sync status
+python3 botbin.py info memory/aifbin/file.aif-bin   # File details
+python3 botbin.py extract memory/aifbin/file.aif-bin    # Extract original
 ```
 
 ---
@@ -55,10 +99,6 @@ mkdir -p memory
 ### Sync
 
 Converts changed `.md` files to `.aif-bin` with embeddings.
-
-```bash
-python3 botbin.py sync
-```
 
 **Output:**
 ```
@@ -73,11 +113,6 @@ Skipped (unchanged): 4 files
 ### Search
 
 Search your memory files by meaning.
-
-```bash
-python3 botbin.py search "what decisions did we make"
-python3 botbin.py search "project timeline" -k 10
-```
 
 **Output:**
 ```
@@ -94,25 +129,13 @@ Query: "what decisions did we make"
 
 Show sync status and statistics.
 
-```bash
-python3 botbin.py status
-```
-
 ### Info
 
 Show details about an AIF-BIN file.
 
-```bash
-python3 botbin.py info memory/aifbin/2026-02-02.aif-bin
-```
-
 ### Extract
 
 Recover original markdown from an AIF-BIN file.
-
-```bash
-python3 botbin.py extract memory/aifbin/2026-02-02.aif-bin
-```
 
 ---
 
@@ -151,6 +174,34 @@ Uses `all-MiniLM-L6-v2` (384 dimensions) by default:
 - Good quality for document retrieval
 - ~90MB model download on first run
 - Cached locally after first use
+
+---
+
+## Troubleshooting
+
+### Windows
+
+**"python is not recognized"**
+- Install Python from [python.org](https://www.python.org/downloads/)
+- Make sure to check "Add Python to PATH" during installation
+
+**"pip is not recognized"**
+- Run `python -m pip install -r requirements.txt` instead
+
+### macOS
+
+**"externally-managed-environment" error**
+- Use `pip3 install --user -r requirements.txt`
+- Or create a virtual environment: `python3 -m venv venv && source venv/bin/activate`
+
+### Linux / WSL
+
+**"externally-managed-environment" error (Debian/Ubuntu)**
+- Use `pip install -r requirements.txt --break-system-packages`
+- Or create a virtual environment: `python3 -m venv venv && source venv/bin/activate`
+
+**Permission denied**
+- Use `pip install --user -r requirements.txt`
 
 ---
 
