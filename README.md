@@ -2,6 +2,7 @@
 
 **Persistent Semantic Memory for AI Chatbots**
 
+[![CI](https://github.com/terronex-dev/bot-bin/actions/workflows/ci.yml/badge.svg)](https://github.com/terronex-dev/bot-bin/actions/workflows/ci.yml)
 [![Patent Pending](https://img.shields.io/badge/Patent-Pending-blue.svg)](https://terronex.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
