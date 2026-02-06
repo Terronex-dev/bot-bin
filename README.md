@@ -39,58 +39,39 @@ cd bot-bin
 
 ### 2. Install dependencies
 
-#### Windows (PowerShell/CMD)
-
-```powershell
+```bash
+# Install dependencies from the requirements file
 pip install -r requirements.txt
-mkdir memory
-```
-
-#### macOS
-
-```bash
+# or pip3
 pip3 install -r requirements.txt
+
+# Create the memory directory
 mkdir -p memory
 ```
 
-#### Linux (Ubuntu/Debian)
-
-```bash
-pip3 install -r requirements.txt
-mkdir -p memory
-```
-
-#### WSL (Ubuntu)
-
-```bash
-pip install -r requirements.txt --break-system-packages
-mkdir -p memory
-```
-
-> **Note:** WSL Ubuntu uses externally-managed Python. The `--break-system-packages` flag is required, or use a virtual environment.
+> **Note for Debian/Ubuntu/WSL:** If you see an `externally-managed-environment` error, you may need to use `pip install -r requirements.txt --break-system-packages` or set up a [Python virtual environment](https://docs.python.org/3/tutorial/venv.html).
 
 ---
 
 ## Usage
 
-### Windows (PowerShell/CMD)
-
-```powershell
-python botbin.py sync                              # Sync markdown to AIF-BIN
-python botbin.py search "what decisions did we make"   # Semantic search
-python botbin.py status                            # Show sync status
-python botbin.py info memory\aifbin\file.aif-bin   # File details
-python botbin.py extract memory\aifbin\file.aif-bin    # Extract original
-```
-
-### macOS / Linux / WSL
+The following examples use `python3`. On Windows, you may need to use `python` instead.
 
 ```bash
-python3 botbin.py sync                              # Sync markdown to AIF-BIN
-python3 botbin.py search "what decisions did we make"   # Semantic search
-python3 botbin.py status                            # Show sync status
-python3 botbin.py info memory/aifbin/file.aif-bin   # File details
-python3 botbin.py extract memory/aifbin/file.aif-bin    # Extract original
+# Sync markdown files to AIF-BIN format with embeddings
+python3 botbin.py sync
+
+# Perform a semantic search across your memories
+python3 botbin.py search "what decisions did we make"
+
+# Show the current sync status and statistics
+python3 botbin.py status
+
+# Get detailed info about a specific memory file
+python3 botbin.py info memory/aifbin/file.aif-bin
+
+# Extract the original markdown from a memory file
+python3 botbin.py extract memory/aifbin/file.aif-bin
 ```
 
 ---
