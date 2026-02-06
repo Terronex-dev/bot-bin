@@ -12,6 +12,26 @@
 
 Bot-BIN gives your AI chatbot persistent semantic memory. It converts markdown memory files into AIF-BIN format with vector embeddings, enabling search by meaning instead of keywords.
 
+## Performance
+
+Bot-BIN is fast enough for real-time memory retrieval during conversation:
+
+| Operation | Latency | Throughput |
+|-----------|---------|------------|
+| Cosine Similarity (384 dims) | 0.47 microseconds | 2.1M ops/sec |
+| Search 1,000 chunks | 0.39 ms | 2,570 ops/sec |
+| Search 10,000 chunks | 4.81 ms | 208 ops/sec |
+| Search 100,000 chunks | 48.04 ms | 20.8 ops/sec |
+| Chunk 10K words | 0.46 ms | 2,161 ops/sec |
+| MessagePack encode (100 chunks) | 0.50 ms | 1,988 ops/sec |
+| MessagePack decode (100 chunks) | 0.48 ms | 2,104 ops/sec |
+
+Benchmarked on Linux (WSL2), Node.js v22.22.0, February 2026.
+
+For typical personal memory stores (1,000-10,000 chunks), search completes in under 5ms.
+
+---
+
 ## How It Works
 
 ```
@@ -159,6 +179,13 @@ Uses `all-MiniLM-L6-v2` (384 dimensions) by default:
 
 ---
 
+## Documentation
+
+- [Technical Whitepaper](https://terronex.dev/botbin-whitepaper.html) — Full specification and design rationale
+- [Blog Post](https://terronex.dev/blog/botbin-persistent-memory-for-ai-chatbots.html) — Introduction and benchmarks
+
+---
+
 ## Troubleshooting
 
 ### Windows
@@ -193,6 +220,7 @@ Uses `all-MiniLM-L6-v2` (384 dimensions) by default:
 |---------|-------------|
 | [AIF-BIN Lite](https://github.com/Terronex-dev/aifbin-lite) | Core library — create, read, convert |
 | [AIF-BIN Pro](https://github.com/Terronex-dev/aifbin-pro) | CLI with semantic search, batch ingest, watch mode |
+| [AIF-BIN Recall](https://github.com/Terronex-dev/aifbin-recall) | Memory server — HTTP/MCP query interface |
 
 ---
 
